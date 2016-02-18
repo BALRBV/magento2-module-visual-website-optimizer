@@ -1,3 +1,7 @@
+[![Build Status](https://scrutinizer-ci.com/g/BALRBV/magento2-module-visual-website-optimizer/badges/build.png?b=master)](https://scrutinizer-ci.com/g/BALRBV/magento2-module-visual-website-optimizer/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/BALRBV/magento2-module-visual-website-optimizer/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/BALRBV/magento2-module-visual-website-optimizer/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/BALRBV/magento2-module-visual-website-optimizer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/BALRBV/magento2-module-visual-website-optimizer/?branch=master)
+
 # Magento 2 Module: Visual Website Optimizer
 
 Make it easy to add the vwo.com JS code before the </head>. 
