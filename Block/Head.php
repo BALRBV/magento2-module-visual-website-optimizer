@@ -3,7 +3,6 @@
 namespace Balrbv\VisualWebsiteOptimizer\Block;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\Request\Http;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -44,23 +43,29 @@ class Head extends Template
         }
 
         // Define template
-        switch ($this->getType()) {
-            case 'complex':
-                $this->setTemplate('complex.phtml');
-                break;
-            default:
-            case 'simple':
-                $this->setTemplate('simple.phtml');
-        }
+        $this->setTemplate($this->defineTemplate());
 
         // Return default behavior
         return parent::_toHtml();
     }
 
     /**
+     * @return string
+     */
+    public function defineTemplate()
+    {
+        switch ($this->getType()) {
+            case 'complex':
+                return 'complex.phtml';
+        }
+
+        return 'simple.phtml';
+    }
+
+    /**
      * @return bool
      */
-    protected function isEnabled()
+    public function isEnabled()
     {
         return (bool)$this->scopeConfig->getValue('visualwebsiteoptimizer/general/enabled',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
@@ -69,7 +74,7 @@ class Head extends Template
     /**
      * @return string
      */
-    protected function getType()
+    public function getType()
     {
         return $this->scopeConfig->getValue('visualwebsiteoptimizer/general/type',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
