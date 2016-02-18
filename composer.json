@@ -1,0 +1,31 @@
+{
+  "name": "balrbv/magento2-module-visual-website-optimizer",
+  "description": "Add vwo.com before </head>",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0",
+    "magento/module-catalog": "100.0.*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  ],
+  "authors": [
+    {
+      "name": "Stefan Doorn",
+      "email": "stefan@balr.com",
+      "homepage": "https://www.balr.com"
+    }
+  ],
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Balrbv\\VisualWebsiteOptimizer\\": ""
+    }
+  }
+}

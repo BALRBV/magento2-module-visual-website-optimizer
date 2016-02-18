@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="catalog" translate="label" sortOrder="200">
+            <label>Catalog</label>
+        </tab>
+        <section id="visualwebsiteoptimizer" translate="label" type="text" sortOrder="11259138" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Visual Website Optimizer</label>
+            <tab>catalog</tab>
+            <resource>Balrbv_VisualWebsiteOptimizer::config_visualwebsiteoptimizer</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>General</label>
+                <attribute type="expanded">1</attribute>
+                <field id="enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enable Extension?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="accountId" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Account Id</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="type" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Type?</label>
+                    <source_model>Balrbv\VisualWebsiteOptimizer\Model\Config\Source\Type</source_model>
+                    <comment>Simple means the real URL will be used by VWO. With the Complex type the rewrited path will
+                        be used as URL. This last version makes it possible to target all product pages at once e.g.
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
