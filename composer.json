@@ -11,6 +11,7 @@
       "url": "https://repo.magento.com/"
     }
   ],
+  "license": "MIT",
   "authors": [
     {
       "name": "Stefan Doorn",
