@@ -18,11 +18,6 @@ class HeadTest extends \PHPUnit_Framework_TestCase
     protected $contextMock;
 
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    protected $scopeMock;
-
-    /**
      *
      */
     public function setUp()
@@ -30,15 +25,15 @@ class HeadTest extends \PHPUnit_Framework_TestCase
         parent::setUp();
 
         $this->objectManager = new \Magento\Framework\TestFramework\Unit\Helper\ObjectManager($this);
-        $this->contextMock = $this->objectManager->getObject('Magento\Framework\View\Element\Template\Context');
-        $this->scopeMock = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
+        $construct = $this->objectManager->getConstructArguments('Magento\Framework\View\Element\Template\Context');
+        $construct['scopeConfig'] = $this->getMockBuilder('Magento\Framework\App\Config\ScopeConfigInterface')->disableOriginalConstructor()->getMock();
+        $this->contextMock = $this->objectManager->getObject('Magento\Framework\View\Element\Template\Context', $construct);
     }
 
     public function testConstruct()
     {
         $obj = new Head(
             $this->contextMock,
-            $this->scopeMock,
             []
         );
 
@@ -49,7 +44,6 @@ class HeadTest extends \PHPUnit_Framework_TestCase
     {
         $obj = new Head(
             $this->contextMock,
-            $this->scopeMock,
             ['test' => true]
         );
 
@@ -60,7 +54,6 @@ class HeadTest extends \PHPUnit_Framework_TestCase
     {
         $obj = new Head(
             $this->contextMock,
-            $this->scopeMock,
             []
         );
 
@@ -74,9 +67,12 @@ class HeadTest extends \PHPUnit_Framework_TestCase
         $mock->expects($this->at(0))->method('getValue')->will($this->returnValue(TRUE));
         $mock->expects($this->at(1))->method('getValue')->will($this->returnValue(FALSE));
 
+        $construct = $this->objectManager->getConstructArguments('Magento\Framework\View\Element\Template\Context');
+        $construct['scopeConfig'] = $mock;
+        $contextMock = $this->objectManager->getObject('Magento\Framework\View\Element\Template\Context', $construct);
+
         $obj = new Head(
-            $this->contextMock,
-            $mock,
+            $contextMock,
             []
         );
 
@@ -95,9 +91,12 @@ class HeadTest extends \PHPUnit_Framework_TestCase
         $mock->expects($this->at(0))->method('getValue')->will($this->returnValue('simple'));
         $mock->expects($this->at(1))->method('getValue')->will($this->returnValue('complex'));
 
+        $construct = $this->objectManager->getConstructArguments('Magento\Framework\View\Element\Template\Context');
+        $construct['scopeConfig'] = $mock;
+        $contextMock = $this->objectManager->getObject('Magento\Framework\View\Element\Template\Context', $construct);
+
         $obj = new Head(
-            $this->contextMock,
-            $mock,
+            $contextMock,
             []
         );
 
@@ -115,9 +114,12 @@ class HeadTest extends \PHPUnit_Framework_TestCase
         $mock = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
         $mock->expects($this->at(0))->method('getValue')->will($this->returnValue('complex'));
 
+        $construct = $this->objectManager->getConstructArguments('Magento\Framework\View\Element\Template\Context');
+        $construct['scopeConfig'] = $mock;
+        $contextMock = $this->objectManager->getObject('Magento\Framework\View\Element\Template\Context', $construct);
+
         $obj = new Head(
-            $this->contextMock,
-            $mock,
+            $contextMock,
             []
         );
 
@@ -132,9 +134,12 @@ class HeadTest extends \PHPUnit_Framework_TestCase
         $mock = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
         $mock->expects($this->at(0))->method('getValue')->will($this->returnValue('simple'));
 
+        $construct = $this->objectManager->getConstructArguments('Magento\Framework\View\Element\Template\Context');
+        $construct['scopeConfig'] = $mock;
+        $contextMock = $this->objectManager->getObject('Magento\Framework\View\Element\Template\Context', $construct);
+
         $obj = new Head(
-            $this->contextMock,
-            $mock,
+            $contextMock,
             []
         );
 
@@ -148,9 +153,12 @@ class HeadTest extends \PHPUnit_Framework_TestCase
         $mock = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
         $mock->expects($this->at(0))->method('getValue')->will($this->returnValue(FALSE));
 
+        $construct = $this->objectManager->getConstructArguments('Magento\Framework\View\Element\Template\Context');
+        $construct['scopeConfig'] = $mock;
+        $contextMock = $this->objectManager->getObject('Magento\Framework\View\Element\Template\Context', $construct);
+
         $obj = new Head(
-            $this->contextMock,
-            $mock,
+            $contextMock,
             []
         );
 

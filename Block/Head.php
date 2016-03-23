@@ -20,15 +20,13 @@ class Head extends Template
     /**
      * Head constructor.
      * @param Context $context
-     * @param ScopeConfigInterface $scopeConfig
      * @param array $data
      */
     public function __construct(
         Context $context,
-        ScopeConfigInterface $scopeConfig,
         array $data
     ) {
-        $this->scopeConfig = $scopeConfig;
+        $this->scopeConfig = $context->getScopeConfig();
         parent::__construct($context, $data);
     }
 
